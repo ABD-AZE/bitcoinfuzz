@@ -112,10 +112,7 @@ namespace bitcoinfuzz
         {
             std::optional<std::string> res{module.second->deserialize_invoice(invoice)};
             if (!res.has_value()) continue;
-            if (last_response.has_value()) {
-                assert(*res == *last_response);
-            }
-
+            if (last_response.has_value()) assert(*res == *last_response);
             last_response = res.value();
         }
     }
@@ -133,7 +130,7 @@ namespace bitcoinfuzz
             std::optional<std::string> res{module.second->address_parse(address)};
             if(!res.has_value()) continue;
 
-            if(last_response.has_value()) 
+            if(last_response.has_value())
             {
                 if(*res != *last_response)
                 {
